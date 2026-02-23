@@ -1,1 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maaf Om 🐻</title>
 
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom, #ffd6e7, #fff0f5);
+        font-family: 'Comic Sans MS', cursive;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    h1 {
+        margin-top: 40px;
+        font-size: 2.5em;
+        color: #ff4d88;
+        animation: bounce 1.5s infinite;
+    }
+
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    .bear {
+        font-size: 120px;
+        margin-top: 20px;
+        animation: wiggle 2s infinite;
+    }
+
+    @keyframes wiggle {
+        0% { transform: rotate(0deg); }
+        25% { transform: rotate(5deg); }
+        50% { transform: rotate(0deg); }
+        75% { transform: rotate(-5deg); }
+        100% { transform: rotate(0deg); }
+    }
+
+    .message {
+        font-size: 1.3em;
+        margin: 20px;
+        color: #444;
+    }
+
+    .buttons {
+        margin-top: 20px;
+    }
+
+    button {
+        padding: 15px 25px;
+        font-size: 1.1em;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        margin: 10px;
+        transition: 0.2s;
+    }
+
+    #yesBtn {
+        background-color: #ff99c8;
+        color: white;
+    }
+
+    #yesBtn:hover {
+        background-color: #ff4d88;
+        transform: scale(1.1);
+    }
+
+    #noBtn {
+        background-color: #ccc;
+        position: absolute;
+    }
+
+    .heart {
+        position: absolute;
+        font-size: 20px;
+        animation: floatUp 4s linear infinite;
+    }
+
+    @keyframes floatUp {
+        0% { transform: translateY(0); opacity: 1; }
+        100% { transform: translateY(-600px); opacity: 0; }
+    }
+</style>
+</head>
+
+<body>
+
+<h1>Maaf Ya Om 🥺💖</h1>
+
+<div class="bear">🐻</div>
+
+<div class="message">
+    Om jangan marah lama-lama yaaa 🥹<br><br>
+    Beruang kecil ini beneran minta maaf…<br>
+    Pencet iya dong Om 😭💗
+</div>
+
+<div class="buttons">
+    <button id="yesBtn" onclick="forgive()">Iya, Om maafin 🥰</button>
+    <button id="noBtn">Belum 😝</button>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+let scale = 1;
+
+noBtn.addEventListener("mouseover", function() {
+    moveAndShrink();
+});
+
+function moveAndShrink() {
+    // pindah posisi
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+
+    // makin kecil
+    if (scale > 0.3) {
+        scale -= 0.1;
+        noBtn.style.transform = "scale(" + scale + ")";
+    } else {
+        noBtn.innerText = "Yaudah 😭";
+    }
+}
+
+function forgive() {
+    alert("YAYYY!! 🐻💖 Om terbaik seduniaaa!!");
+    createHearts();
+}
+
+function createHearts() {
+    for (let i = 0; i < 25; i++) {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.top = window.innerHeight + "px";
+        heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 4000);
+    }
+}
+</script>
+
+</body>
+</html>
